@@ -7,6 +7,7 @@ import TaskEx4 from './TaskEx4'
 import TaskEx5 from './TaskEx5'
 import TaskEx6 from './TaskEx6'
 import Task7 from './Task7'
+import Task8 from './Task8'
 
 const TaskIntro = () => {
   return (
@@ -26,7 +27,9 @@ const TaskIntro = () => {
 
         {/* <TaskEx6/> */}
 
-        <Task7/>
+        {/* <Task7/> */}
+
+        <Task8/>
     </div>
   )
 }
