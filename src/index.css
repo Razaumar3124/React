@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+#Navbar{
+  width: 100%;
+  height: 15vh;
+  background-color: lightcoral;
+}
+
+#home{
+  display: flex;
+  width: 100%;
+  height: 65vh;
+  background-color: lightgrey;
+}
+
+#HomeAside{
+  width: 25%;
+  height: 100%;
+  background-color: lightsalmon;
+}
+
+#HomeMain{
+  width: 75%;
+  height: 100%;
+  background-color: lightseagreen;
+}
+
+#footer{
+  width: 100%;
+  height: 20vh;
+  background-color: lightskyblue;
+}
+
+#eventsTask2{
+  width: 2vw;
+  height: 2vw;
+  background-color: purple;
+}
+
+
