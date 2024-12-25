@@ -1,0 +1,884 @@
+Languages need to know before starting reactjs :-
+1) html
+2) css
+3) tailwind css
+4) Javascript--- ES6 ---->Arrow functions
+         |            |
+         |            |--->Let & Const
+         |            |
+         |            |--->rest and spread
+         |            |
+         |            |--->Async await
+         |           
+         |
+         |--->DOM
+         |
+         |--->Js engine working
+         |
+         |--->Modules
+         |
+         |--->classes
+         |
+         |--->Section 3
+         |
+         |--->map/filter/reduce
+         |
+         |--->conditional statements
+         |
+         |--->looping
+         |
+         |--->return keyword
+         |
+
+------------------------------------------------------------------------------------
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+
+    <script type="module" src="./script.js"></script>
+    <script type="module" src="./script2.js"></script>
+</body>
+</html>
+
+#script.js file
+export let a = 10;
+
+#script2.js file
+import { a } from "./script";
+console.log(a);
+
+Imp) when we use type="module" in script tag it will convert it into a function which is 
+immediate invoke function. In the above example both the files are internally converted in immediate
+invoke function.
+Imp) Without using type="module" in the script tag in html file we can't do import and export.
+
+Modules :- By using modules first we have to export it and then we have to import it.
+
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./script2.js"></script>
+</body>
+</html>
+
+#script.js file
+export let a = 10;
+
+#script2.js file
+import { a } from "./script";
+console.log(a);  
+
+Imp) In the above example if script.js is not linked then script2.js will find the elements bcoz we 
+have imported the values.
+
+-----> We have two types of exports:-
+1) Named Export :- while importing values using names export we have to use curly brackets({}) 
+                    while importing.
+example:- 
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+
+    <script type="module" src="./script.js"></script>
+    <script type="module" src="./script2.js"></script>
+</body>
+</html>
+
+#script.js file
+export let a =10;
+
+#script2.js file
+import { a } from "./script";
+console.log(a);
+
+2) Default Export :- No need to use curly brackets({}) while importing values into another file
+                    and also same name is not required while importing elements
+example:- 
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./Usa.js"></script>
+    <script type="module" src="./India.js"></script> 
+</body>
+</html>
+
+#India.js file
+import fuel from "./Usa.js";
+console.log(fuel);
+
+#Usa.js file
+let fuel = "petrol";
+export default fuel;
+
+
+---> another example  --->in Default export same name is not required while importing elements
+
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./Usa.js"></script>
+    <script type="module" src="./India.js"></script> 
+    <script type="module" src="./russia.js"></script>
+</body>
+</html>
+
+#Usa.js file
+let fuel = "petrol"
+export default fuel
+
+#russia.js file
+let fuel = "Diesel";
+export default fuel;
+
+#India.js file
+import hindutanPetrolium from "./Usa.js"
+import Indianoil from "./russia.js";
+console.log(hindutanPetrolium);
+console.log(Indianoil);
+
+
+Imp) using default export we can't export multiple values and it also not comma seperated
+        and also it will create a problem bcoz we are exporting multiple elements 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./Usa.js"></script>
+    <script type="module" src="./India.js"></script> 
+    <script type="module" src="./russia.js"></script>
+</body>
+</html>
+
+#Usa.js file
+let fuel = "petrol"
+export default fuel
+
+#russia.js file
+let fuel1 = "Diesel";
+let fuel2 = "kerosin";
+export default fuel1;
+export default fuel
+
+#India.js file
+import hindutanPetrolium from "./Usa.js"
+import Indianoil from "./russia.js";
+console.log(hindutanPetrolium);
+console.log(Indianoil);
+
+
+---> another example --> to overcome the above code of program where we are exporting single single 
+    element we can just store it in an object or list.
+example:- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./Usa.js"></script>
+    <script type="module" src="./India.js"></script> 
+    <script type="module" src="./russia.js"></script>
+</body>
+</html>
+
+#Usa.js file
+let fuel = "petrol"
+export default fuel
+
+#russia.js file
+let fuel1 = "Diesel";
+let fuel2 = "kerosin";
+let container = [fuel1,fuel2]
+export default container;
+
+#India.js file
+import hindutanPetrolium from "./Usa.js"
+import everything from "./russia.js";
+console.log(hindutanPetrolium);
+console.log(everything);
+
+
+----> another example ----> the more convinent for exporting between an object and list is object.
+    bcoz while using we have to do indexing and destructuring and if we are importing then we won't 
+    know what we are importing that's why we use objects because it is stored in key:value pair
+    if we are importing we will know what we are importing.
+
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./Usa.js"></script>
+    <script type="module" src="./India.js"></script> 
+    <script type="module" src="./russia.js"></script>
+</body>
+</html>
+
+#Usa.js file
+let fuel = "petrol"
+export default fuel
+
+#russia.js file
+let add = (a,b)=>{
+    console.log(`sum of ${a} and ${b} is ${a+b}`);
+}
+let sub = (a,b)=>{
+    console.log(`sum of ${a} and ${b} is ${a-b}`);
+}
+let mul = (a,b)=>{
+    console.log(`sum of ${a} and ${b} is ${a*b}`);
+}
+let div = (a,b)=>{
+    console.log(`sum of ${a} and ${b} is ${a/b}`);
+}
+let container = [add,sub,mul,div]
+export default container;
+
+
+#India.js file
+import allFunc from "./russia.js"
+console.log(allFunc);
+allFunc[0](10,20)         // here we are not knowing what function we are executing
+let [a,b,c,d]=allFunc 
+a(10,20)        // here also we are not knowing what function we are executing
+
+
+another example using Objects :-
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./India.js"></script> 
+    <script type="module" src="./russia.js"></script>
+</body>
+</html>
+
+#russia.js file
+let plane1 = "fighter jet"
+let plane2 = "cargo plain"
+let planes = {
+    plane1 : plane1,
+    plane2 : plane2
+}
+export default planes
+
+#India.js file
+import planes from "./russia.js"
+console.log(planes);
+
+
+#another example and more simplyfied version of using objects to export
+#html file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <script type="module" src="./India.js"></script> 
+    <script type="module" src="./russia.js"></script>
+</body>
+</html>
+
+#russia.js file
+let plane1 = "fighter jet"
+let plane2 = "cargo plain"
+export default {plane1,plane2}
+
+#India.js file
+import planes from "./russia.js"
+console.log(planes);
+
+---------------------------------------------------------------------------------------------------
+
+Module :- it is similar to function , module means files, you will be having the abilty to import and
+            export element between files.
+why module?
+1) code reusability
+2) 
+
+Default Export :- 
+1) In default export we have to use default keyword 
+2) we can wrtie default keyword only once
+3) If we want to export multiple variables in the deafault way, we can wrap this varibale into an 
+object and then we will export that object.
+4) when it is default export while importing we can use any name
+5) when it is default export while importing we should not take curly braces. 
+6) when we are exporting as a default, default keyword should not be on the same line of variable 
+    declaration.
+
+Named Export:-
+1) we can use named export multiple times
+2) we can do named export multiple times.
+3) when it is Names export while importing we should take same exported name
+4) when it is Named export while importing we must take curly braces. 
+5) when we are exporting as a default, default keyword should not be on the same line of variable 
+    declaration.
+6) we cannot use default keyword 
+
+---------------------------------------------------------------------------------------------------
+
+                                        React 
+                                    -------------
+
+react is a javascript library which is used for building single page applications.
+.jsx is the extension of react 
+.jsx stands for javascript and xml
+
+library :- 
+    It is the lightweight reuseable block of code.
+    library is the collection of reuseable block of code.
+    libraries are always targeting particular functionality oriented.
+    using libraries we can create fast and scalable applications.
+    The applications created using library are easy to debug.
+    compared to frameworks library are loosely type
+
+
+framework :- 
+    frameworks is the collection of libraries
+    framework focuses on multiple functionalities .
+    frameworks are heavy to use as compare to libraries
+    frameworks are stricly type as compared to libraries   
+    if we need any external libraries and packages with frameworks we can install them.
+    we can use multiple external libraries
+    compared to library applications developed using frameworks are little slow.
+    applications developed using frameworks are harder to debug.
+
+Single page applications :- 
+    Single page applications are those applications which does referesh again and again it will 
+    redirect to another page instantly
+    Single page applications are those applications which that does not require page reload for 
+    updating the content.
+    Usually single page application will contain one html file
+    single page applications are faster then multipage applications.
+    AJAX(asynchronous javascript and XML) is the hero of single page applications
+
+For creating single page applications which language do we need?
+React js
+Angular js
+Vue js
+
+imp) react also has a framework which is next js
+react focuses on only front-end but next js will focus on front-end as well as backend
+
+Q) What is AJAX?
+Ans) Ajax will sent only the neccessary request to the server so that bandwidth will be very-very 
+less and because of that your request-response cycle becomes extremely faster and ultimately
+you application will become faster.
+It acts as a validation point where it will sent only the required request  and receive its response 
+from the server 
+
+Bandwidth :- 
+    It is the number of request and response cycles per second
+    Bandwidth is how many request  is sent and received in 1 seconds
+    As minimum is your bandwidth that much of fast is your application
+
+
+package bundler:-
+    package bundler will bundle all the request into individual bundles based on their extensions
+    package bundlers will help to reduce the bandwidth
+    if we are sending N number of request from the frontend that multiple requests are bundled into 
+    as minimum number of request as much as possible based on their extensions by the package bundler
+    so that bandwidth will be reduced
+
+packages used for bundling:-
+    webpack
+    Rollup :-
+        rollup is the package bundler which is only used for react
+    Parcer
+
+-------------------------------------------------------------------------------------------------
+
+After installation and creating a project ,
+
+node_module folder:- 
+1) node_module is the heart of react similar to car engine to car.
+2) node_module is the folder which holds all the packages that are downloaded during the react 
+    installation and these packages are neccessary for running the react application.
+examples of packages installed.
+3) don't touch the node_module or make any changes if changes are don't and you are getting error
+    then delete the existing project and create a new project file
+i) babel
+ii) eslint
+iii) rollup
+iv) vitejs
+v) react
+vi) react-dom
+
+public folder:- 
+    In public folder we will store the static asset, it is same as asset folder, i.e img,video,audio 
+    we will not use public folder instead of that we will use src>asset folder 
+
+src folder :- 
+    inside src folder there is asset folder which is used to store imgs,audio,video,pdf like our
+    asset folder
+
+gitignore file :- 
+    In gitignore file if we don't some data to be displayed on the ui then we use this
+    what git file we are entering it will just ignore it
+
+eslint.config.js file:-
+    eslint will give you the syntax errors while writing the javascript code
+
+index.html :- 
+    with react installation we will have only one html file in that html file we have only two 
+    important tags one div whose id is root and one script tag we have type="module"
+    we will not wrtie any html code in html file
+    ex:-
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+package.json and package-lock.json:- 
+    package.json and package-lock.json all the package downloaded in the form of json format
+    all the packages download while installation are stored in node_module but package.json and 
+    package-lock.json will show all the details about the packages
+
+readme file :-
+    In readme file we will write the description of the project or some instruction for the team
+
+vite.config.js file:- 
+    In that file we will have the configation of vite file
+
+    "version": "1.0.1"
+                ⬆ ⬆ ⬆
+    pach <------| ⬆ |---> minor update
+    update        ⬆
+            major update
+
+package.json > devdependencies :- 
+devdependecies are those libraries and packeages that are neccessary during development only 
+and are not required after deployment 
+examples :- eslint,vite -----> we will not need after development of the program
+
+
+package.json > dependencies
+these are major dependencies that are neccessary during development as well as production phase.
+example :_ react and react-dom --->we still need this lib after deployment.
+
+vite :- 
+it is a type of service provider which we are using to create react applications.
+it will cost less memory storage upto 55mb.
+it is the latest library used for creating applications using react.
+it is around 40 times fast than other library of react.
+
+
+-----------> Most interview queston ask for react:-
+Q) Diffing algorithm?
+Ans) diffing algorithm is the process of finding the differences between real dom and virtual dom.
+
+Q) what is reconciliation process?
+Ans) Reconciliation is the process of implementing the changes from virtual dom to real dom that are 
+    found during the diffing algorithm.
+
+imp) React fiber is the react engine just like in javascript the compilation would be taken care by 
+    javascript engine
+
+Q) what is babel?
+Ans) babel is a tranpiler it will convert the modern javascript or jsx code into browser 
+    understandable javascript code and this process is called tranpilations and transpilation is done 
+    by babel.
+    Transpilation occurs during the rendering 
+*)modern javascript code means jsx code
+
+Q) transpilation process?
+Ans) it will convert modern javascript code or jsx code into browser understandable javascript and for this 
+    conversion babel is neccssary.
+    transpilation occurs during the rendering.
+    for example :-
+    let app = ()=>{
+        <div>
+            <h1></h1>
+        </div>
+    }
+    //before the compilation the above code is not understandable to the browser because internally 
+    is stored as div.createElement() that why tranpilations takes place using babel library.
+
+
+Q) What is jsx?
+Ans) jsx stands for javascript and XML
+jsx is html look like javascript code
+*) While writeing jsx we need to follow some rules:
+1) you must return the jsx. if you are not returning jsx you will not get the output
+
+
+imp) Return statement should be last statement only and only one return statement can be written,
+at a time we can return only one data
+---------------------------- History of React ---------------------------------------------------
+Angular js :-
+*) Before react there was angular js the product of google developed in 2009 and it is a framework.
+*) Also Angukar js follows MVC(model view controller) architechture.
+*) It supports only the javascript.
+*) when it was introduced it was a successful framework because it was the only one at that time used
+    for creating single page applications
+
+React js :-
+*) React was introduced in 2011 by facebook 
+*) It was introduced by Jordan walke while he was working in facebook.
+*)  It is a library.
+*) React js follows component based architechture.
+*) It supports javascript / Typescript.
+*) using react js facebook messenger was developed in 2011.
+*) using react js instagram was developed in 2012.
+*) React js was made open source in 2013.
+
+Angular2 :-
+*) Angular2 js was introduced in 2014-15 by google and it is a framework.
+*) It follows component based architechture.
+*) It supports only Typescript.
+
+Vue js:-
+*) Vue js was introduced in 2015-16 by Evan you and he was a scientist.
+*) It is a framework.
+*) It follows component based architechture.
+*) It supports javascript / Typescript.
+
+Imp) Component based architechture is a easy to use
+
+imp) npm(node package manager):- 
+    npm stands for node package manager and also it is the worlds largest package registry.
+    npm has its own website where we will get already written code in reactjs, angular ja, vue js,
+    java,python,etc.
+    There more than 2.1 million packages which we can use and modify according to our needs.
+    npm is also a registry and package installer as well.
+    
+Imp) If we are downloading npm install react from the command prompt then a request is sent to node 
+    file present in the software it will go and fetch the react file and install it.
+ 
+Insert of npm we can use:-
+1) npm
+2) Yarn
+3) bun
+4) pnpm
+5) spm
+6) cnpm
+7) chocolaty
+
+To create new with the latest version then we use "npm create vite@latest" in the command prompt
+
+StrictMode :-
+Imp) In main.jsx file StrictMode is import for strictly checking the code but the drawback is that
+the console output will be printed two times.so we remove it
+
+Imp) when we create a particular component and it htat component we are creating function and in 
+that function we are returning value as (<div>Hello</div>) then we are exporting a function with that
+function name and then we are importing it in another file and when we using <function_name /> in that
+file that we can say we are calling that function.
+
+CreateRoot :- 
+for example :- 
+    createRoot(document.getElementById('root')).render(
+    <div>
+        <Navbar/> 
+    </div>
+    )
+
+*) In the above example we are internally using Dom only.
+basically in the above example when the root is created we are just rendering the components.
+Imp) While we are using .render method it is similar to append method and we use render because when 
+    the rendering proccess transpilation also happens.
+
+
+    --------------------------       -----------------      --------------              |-> demo1child1
+    |<div id="root"></div>   |       | _________     |      | __________ | <--- Demo1 --|-> demo1child2
+    |<script src="main.jsx"> | ----> | _________     |      | __________ |              |-> demo1child3
+    |</script>               | <---- |  .render(     | <----| __________ | <--- Demo2
+    |                        |       |      <App />  |      | __________ |
+    |                        |       |      )        |      | __________ | <--- Demo3
+    --------------------------       -----------------      --------------
+            index.html                    Main.jsx              App.jsx
+
+first the html file will get executed then main.jsx will execute. when main.jsx file execute app.jsx 
+file is called and from app.jsx there are multiple component present and are called and inside that 
+another multiple components are call when all the component will get executed then it will come to 
+app.jsx file then app.jsx file will gets executed and the main.jsx file will get executed after it. 
+In main.jsx file root or base is created and all the call methods present in app.jsx will be rendered on 
+and in that trnaspilation process occurs after that the html page will get executed.  
+
+*Imp)This is how component architecture will work.
+
+component are similar to functions which are block of code
+
+If we want to write some javascript code inside a component then we will write the code out side the 
+function and inside a component
+for example :- below is a component
+let App = ()=>{
+
+    #here we will write javascript code
+
+    return(
+        <div>Hello</div>
+    )
+}
+export default App
+
+Another example for more clarity:- this below example is called jsx expression.
+let App = ()=>{
+
+    let a = 10
+
+    return(
+        <div>Hello {a}</div>
+    )
+}
+export default App
+
+npx :- node package executor
+npm will complosory download all the packages and libraries in your system means we are downloading 
+the packages and then we can use them.
+npx will download only the neccessory packages and  
+   
+  
+   
+ 
+
+-----------------------------------------------------------------------------------------------------
+                        npm                   |                          npx
+-----------------------------------------------------------------------------------------------------
+1) Node package manager                       |1) Node package executor
+----------------------------------------------------------------------------------------------------
+2) npm will complosory download all the       |2) npx will download only the neccessory packages and
+  packages and libraries in your system means |  remaining packages we can access without
+  we are downloading the packages and then    |  downlaoding them (if we want to use facebook in
+  we can use them.                            |  mobile phone there are two ways one is downloading
+                                              |  the facebook app which is similar with nom way hence
+                                              |  we are downlaoding and then we are using it and the
+                                              |  second way of using facebook is downloading the
+                                              |  browser(neccessory package) here in this example we
+                                              |  are not dowmloading the facebook bit instead we are
+                                              |  downlaoding the neccessory package (browser) and 
+                                              | executing / using facebook on that package).
+-----------------------------------------------------------------------------------------------------
+3) It is the latest one used now.             |3) It is the older version.
+-----------------------------------------------------------------------------------------------------
+
+Imp)
+instead of using empty fragment an important attribute comes with it and we can't use in empty 
+fragment instead of theat we use react.fragment or import frament form react then use fragment
+
+Render method is used to display the jsx on the UI and during rendering multiple inbuilt processes will
+happen like transpilation, diffing, reconciliation, etc.
+
+react is famous for state management ability
+it is used to update delete the values in structurized manner..
+
+---------------------------------- Components -----------------------------------------------------
+Types of Components There are two types :-
+1) Class Based Components:-
+    class based component are the components that are created using classes
+
+CBC is one of the traditional ways of creating the component in react it is important to understand 
+diffrence between class based component and function based component.
+
+----------------------------------------------------------------------------------------------------
+                        Class based            |              Function based
+----------------------------------------------------------------------------------------------------
+1) we will use classes for creating the        |1) we will use functions for creating the components.
+components.                                    |
+-----------------------------------------------------------------------------------------------------
+2) class based components extends component.   |2)function based component does not extends the 
+                                               |component.
+-----------------------------------------------------------------------------------------------------                         
+3) class based component has constructor       |3) function based component does not have constructor.
+super().                                       |
+-----------------------------------------------------------------------------------------------------
+4) Class based component we must use render()  |4) Function based component does not require the render 
+inside that we have to use return().           |method it will return the jsx to the parent or caller.
+-----------------------------------------------------------------------------------------------------
+5) Class based component is a stateful         |5) function based component are stateless components 
+component means that it has inbuilt state and  |means that it does not have its own state and 
+to manage the state we have inbuilt            |setState(). if we want to have state in function 
+setState().                                    |based component we have to use some extra hooks.
+                                               |for example:- useState hook
+-----------------------------------------------------------------------------------------------------                                               
+6) we cannot hooks inside class based          |6) we can use hooks inside function based components.
+components.                                    |
+------------------------------------------------------------------------------------------------------
+7) we have inbuilt life cycle methods in       |7) function based component does not have any inbuilt
+class based components i.e constructor,        |methods for managing life cycle so to acheive 
+render,getDerivedStateFromProps(),             |lifecycle methods in function absed component we have 
+componentDidMount().                           |to use hook called as useEffect hook.
+------------------------------------------------------------------------------------------------------
+
+2) Function Based components
+
+Render method is used to display the jsx on the UI and during rendering multiple inbuilt processes will
+happen like transpilation, diffing, reconciliation, etc.
+
+-------------------------------------------------------------------------------------------------------
+Hot module replacement(HMR):-
+*) Hot module replacement is one of the most useful features offered by Package bundlers.
+*) It allows all kinds of modules to be updated at runtime without the need for a full refresh.
+*) HMR is not intended for use in productions, meaning it should only be used in development.
+*) The page will be dynamically be updated at run time without any refreshment of the page.
+*) Productions means the software is already deployed we can't make any changes to it.
+*) But in Development the software is still under development and we can make changes to it. 
+*) It is similar to autosave.
+*) if we have html file and react file in that both the file we have used h1 tag and input tag and 
+in h1 and input there is some content and if we want to update that the content it will be updated 
+at run time without any refreshment of the page and the data inside input field will remain as it is 
+but in html file if we are updating h1 then the h1 will get uodated but the data inside it will be 
+refreshed.
+*) for example:-
+Html file
+<h1>Login</h1> -->after updation--><h1>Register</h1>
+<input type="text" /> --> input-->"Username" in text field  ---> here if we are updating h1 then input 
+                                                                field will become blank
+
+React file(jsx code)
+<h1>Login</h1> -->after updation--><h1>Register</h1>
+<input type="text" /> --> input-->"Username" in text field  ---> here if we are updating h1 then input 
+                                                                field will not become blank it will
+                                                                remain as it is and it will not 
+                                                                referesh
+
+
+Hooks :-
+*) If we are using any inbuild function which has the prefix as "use" are called as Hooks.
+*) Hooks are nothing but the inbuild methods or functions.
+*) Hooks names starts with "use" for example
+    for example:- useState(), useEffect(), useContext(), useDispatch(), useReducer(), useCallback(),
+                    useMemo().
+*) We can create any function and we will name it useXyz. such functions can be treated as (custom hooks)
+for example:-
+    let useAddition = (a,b)=>{
+        return a+b
+    }
+    let sum = useAddition(10,20)
+    log(sum)
+
+Imp) Features or Characteristics of React:-
+1) It follows component based architechture
+2) React is declarative in nature.
+    *) Declarative means everything is declared we jsut have to use it. i.e if you know how to make 
+        biryani you don't need to ask for any suggestions
+        for example:- DOM jsx the code is written internally like <h1></h1>
+    *) Imperative is the opposite of Declarative
+    *) in imperative many of the thing are declared we have to explicitly r amnually explain them.
+        i.e if you don't know to make biryani then you need instructions for making it.
+    *) declarative means already present in the software we just have to use it according to their
+    respective rules i.e builtin function, we also don't need to write any DOM method because it 
+    has already been declared with jsx 
+    *) i.e we can call react as declarative because react provides many inbuilt hooks for different 
+    functionalities we just have to use them.
+3) Write once use anywhere 
+4) You can create components for such functionalities that are repeatative and we cna use such 
+components n number of times.
+    for example:- we will create the button component once and we will use it where ever we want 
+    any number of times.
+
+rafce:- rafce is the shortcut for the function based component boiler plate.
+rcc:- rcc is the shortcut for the class based component boiler plate
+-----------------------------------------------------------------------------------------------------
+                                Props (porperties)
+                            
+props is a property which is used to send data from one component to another component in the form 
+of object.
+props is a property. 
+Props are immutable. 
+props are present is class based component and function based component. 
+State are only to the component level but props are not in component level.
+
+-----------------------------------------------------------------------------------------------------
+                                    Props Drilling
+*) same data we are sending again and again.
+*) sending the data to the multiple nested component and it is also not a good practice.
+*) we can avoid props drilling by three ways:-
+    1) higher order component.
+    2) context api :-
+        here we are writing the api once and then using it in multiple components
+    3) redux / redux toolkit.
+
+-----------------------------------------------------------------------------------
+Tailwind installation
+
+step1 : search on the browser for "tailwind vite" because we are using react through vite.
+step2 : click on the first link 
+step3 : copy the second box content and run that on the vs code terminal and make sure nothing is running on the terminal 
+        and hit the enter button
+step4 : then 2 new files will be installed for tailwind then go to the tailwind website and copy the third box content
+        and paste it in the new installed "tailwind.config.js" file also make sure to remove the default content first.
+step5 : then again go to the tailwind website and copy the fourth box content and paste it in the existing index.css file 
+step6 : now clear the terminal and run the file again and you will be good to go.
+step7 : while using tailwind css if suggestion are not showing then install the extension named "Tailwind CSS IntelliSense"
+        it is present in vs code also.
+
+Imp) using tailwind if we are using h1,input,button etc the default css will be removed like input field will be blank but 
+it is present just the default css is removed 
+
+---------------------------------- React lifecycle -------------------------------------------
+There are 3 phases in react lifecycle :-
+1) Mounting
+2) updating
+3) Unmounting
+
+mounting phase will execute once.
+updating phase execute n number of times.
+unmounting phase will execute once.
+
