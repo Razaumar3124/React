@@ -4,6 +4,7 @@ import UseStateIntro from "./Components/TypesOfComponents/Hooks/UseStateHook/Use
 import PropsIntro from "./Components/Props/PropsIntro"
 import ModuleIntro from "./Components/ModuleCss/ModuleIntro"
 import EventsIntro from "./Components/Events/EventsIntro"
+import UseEffectIntro from "./Components/useEffectHook/examples/UseEffectIntro"
 
 let App = ()=>{
   return (
@@ -29,8 +30,11 @@ let App = ()=>{
 
 // -------------------------------------------------------------------------------------------------------------------------------
     // Events
-    <EventsIntro/>    
+    // <EventsIntro/>    
 
+// ----------------------------------------------------------------------------------------------------------------------------
+    // UseEffectHook
+    <UseEffectIntro/>
 )
 }
 export default App

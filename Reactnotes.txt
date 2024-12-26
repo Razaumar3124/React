@@ -882,3 +882,10 @@ mounting phase will execute once.
 updating phase execute n number of times.
 unmounting phase will execute once.
 
+----------------------------------- UseEffectHook -------------------------------------------------------------------
+UseEffectHook is a higher order component.
+useEffect with empty dependencies will execute once.
+useEffect
+
+example:
+useEffect(()=>{},[dependencies])
