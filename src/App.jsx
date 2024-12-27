@@ -6,6 +6,7 @@ import ModuleIntro from "./Components/ModuleCss/ModuleIntro"
 import EventsIntro from "./Components/Events/EventsIntro"
 import UseEffectIntro from "./Components/useEffectHook/examples/UseEffectIntro"
 import ContextApiIntro from "./Components/Context api/ContextApiIntro"
+import DataFlowIntro from "./Components/Dataflow/DataFlowIntro"
 
 let App = ()=>{
   return (
@@ -39,7 +40,11 @@ let App = ()=>{
 
 // -------------------------------------------------------------------------------------------------------------------------
     // Context Api 
-    <ContextApiIntro/>
+    // <ContextApiIntro/>
+
+// --------------------------------------------------------------------------------------------------------------------------
+    // DataFlow in react
+    <DataFlowIntro/>
 
 )
 }
