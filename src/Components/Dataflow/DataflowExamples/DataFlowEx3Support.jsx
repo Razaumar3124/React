@@ -1,9 +1,11 @@
 import React from 'react'
 
 const DataFlowEx3Support = (props) => {
-    console.log(props.props.hello("hi bro"))
+    console.log(props.props)
   return (
-    <div></div>
+    <div>
+        <button>click</button>
+    </div>
   )
 }
 
